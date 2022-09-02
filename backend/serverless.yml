@@ -8,6 +8,7 @@ plugins:
   - serverless-iam-roles-per-function
   - serverless-reqvalidator-plugin
   - serverless-aws-documentation
+  - serverless-plugin-tracing 
 
   
 
@@ -69,18 +70,18 @@ custom:
   
   
   
-  #logs:
+  logs:
     # Enable API Gateway logs
-   # restApi: true
+    restApi: true
 
-  #iam:
-   # role:
-    #  statements:
-     #   - Effect: Allow
-     #     Action:
-     #       - xray:PutTelemetryRecords
-     #       - xray:PutTraceSegments
-     #     Resource: "*"
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - xray:PutTelemetryRecords
+            - xray:PutTraceSegments
+          Resource: "*"
 
 
 functions:
